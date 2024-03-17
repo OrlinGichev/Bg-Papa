@@ -1,6 +1,10 @@
 aside {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2em;
+    padding-right: 2em;
     float: right; /* Position the aside section to the right */
-    width: 30%; /* Set the width of the aside section */
+    width: 400px; /* Set the width of the aside section */
     margin-left: 20px; /* Add some space between the main and aside sections */
   }
   
@@ -21,6 +25,8 @@ aside {
   }
   
   img {
-    max-width: 100%; /* Ensure images don't exceed the container width */
+    display: block;
+    height: auto;
+    width: 100%; /* Ensure images don't exceed the container width */
   }
   

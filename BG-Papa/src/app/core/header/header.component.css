@@ -40,6 +40,24 @@ ul li {
   padding: 0 0 4px 5px;
 }
 
+#cars {
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#repair {
+  color: rgb(24, 97, 24);
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#sport {
+  color: rgb(127, 8, 8);
+  font-size: 25px;
+  font-weight: bold;
+}
+
 #main,
 #logo,
 #menubar,
@@ -51,6 +69,7 @@ ul li {
 #header {
   background: #1d1d1d url(./images/header.jpg) repeat;
   height: 240px;
+  opacity: 80%;
 }
 
 #logo {
