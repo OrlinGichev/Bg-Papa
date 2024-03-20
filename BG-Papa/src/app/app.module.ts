@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { MainComponent } from './main/main.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule, UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
