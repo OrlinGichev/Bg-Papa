@@ -1,32 +1,46 @@
 aside {
-    display: flex;
-    flex-direction: column;
-    padding-top: 2em;
-    padding-right: 2em;
-    float: right; /* Position the aside section to the right */
-    width: 400px; /* Set the width of the aside section */
-    margin-left: 20px; /* Add some space between the main and aside sections */
-  }
+  display: flex;
+  flex-direction: column;
+  padding-top: 2em;
+  padding-right: 2em;
+  float: right; /* Position the aside section to the right */
+  width: 400px; /* Set the width of the aside section */
+  margin-left: 20px; /* Add some space between the main and aside sections */
+}
+
+img {
+  display: block;
+  height: auto;
+  width: 100%; /* Ensure images don't exceed the container width */
+}
+
+.auto {
+  background: white;
+}
+
+.repair {
+  background: rgb(18, 146, 18);
+}
+
+.sport {
+  background: rgb(214, 36, 36);
+}
   
-  .category {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 20px;
-  }
+.category {
+  /* background-color: #f9f9f9; */
+  border: 2px solid #181818;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 10px 5px 5px grey;
+}
+
+.category h3 {
+  margin-top: 0;
+}
+
+.category-details {
+  font-weight: bold;
+}
   
-  .category h3 {
-    margin-top: 0;
-  }
-  
-  .category-details {
-    font-weight: bold;
-  }
-  
-  img {
-    display: block;
-    height: auto;
-    width: 100%; /* Ensure images don't exceed the container width */
-  }
   
