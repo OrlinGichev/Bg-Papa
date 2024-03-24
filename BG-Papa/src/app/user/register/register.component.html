@@ -1,15 +1,39 @@
 <div class="form-container">
-    <form action="register_process.php" method="POST">
-        <h2>Register</h2>
-        <input type="text" name="username" placeholder="Username" required>
-        <span class="error-message">Username is required !</span>
-        <input type="email" name="email" placeholder="Email" required>
-        <span class="error-message">Email is required !</span>
-        <input type="password" name="password" placeholder="Password" required>
-        <span class="error-message">Password is required !</span>
-        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-        <span class="error-message"></span>
-        <button type="submit">Register</button>
-    </form>
-    <p>Already have an account? <a routerLink="/login">Login here</a></p>
+  <form #registerForm="ngForm">
+    <h2>Register</h2>
+    <input
+      type="text"
+      name="username"
+      placeholder="Username"
+      ngModel
+      required
+    />
+    <span class="error-message">Username is required !</span>
+    <input 
+        type="email" 
+        name="email" 
+        placeholder="Email" 
+        ngModel 
+        required 
+    />
+    <span class="error-message">Email is required !</span>
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      ngModel
+      required
+    />
+    <span class="error-message">Password is required !</span>
+    <input
+      type="password"
+      name="confirm_password"
+      placeholder="Confirm Password"
+      ngModel
+      required
+    />
+    <span class="error-message"></span>
+    <button (click)="submitForm()">Register</button>
+  </form>
+  <p>Already have an account? <a routerLink="/login">Login here</a></p>
 </div>

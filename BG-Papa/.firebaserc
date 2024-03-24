@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "bg-papa"
+  },
+  "targets": {
+    "bg-papa": {
+      "hosting": {
+        "BG-Papa": [
+          "bg-papa"
+        ]
+      }
+    }
   }
 }
