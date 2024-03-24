@@ -5,26 +5,41 @@
       type="text"
       name="username"
       placeholder="Username"
+      #inputUsername = "ngModel"
       ngModel
+      minlength="4"
       required
     />
-    <span class="error-message">Username is required !</span>
+    <ng-container *ngIf="inputUsername.touched">
+      <span class="error-message" *ngIf="inputUsername.errors?.['required']">Username is required !</span>
+      <span class="error-message" *ngIf="inputUsername.errors?.['minlength']">Username must be at least 4 characters !</span>
+    </ng-container>
     <input 
         type="email" 
         name="email" 
         placeholder="Email" 
-        ngModel 
-        required 
+        ngModel
+        #inputEmail = "ngModel" 
+        required
+        [appEmail]="inputEmail.value" 
     />
-    <span class="error-message">Email is required !</span>
+    <ng-container *ngIf="inputEmail.touched">
+      <span class="error-message" *ngIf="inputEmail.errors?.['required']">Email is required !</span>
+      <span class="error-message" *ngIf="inputEmail.errors?.['emailValidator']">Email is not valid !</span>
+  </ng-container>
     <input
       type="password"
       name="password"
       placeholder="Password"
       ngModel
+      #inputPassword = "ngModel"
       required
+      minlength="5"
     />
-    <span class="error-message">Password is required !</span>
+    <ng-container *ngIf="inputPassword.touched">
+      <span class="error-message" *ngIf="inputPassword.errors?.['required']">Password is required !</span>
+      <span class="error-message" *ngIf="inputPassword.errors?.['minlength']">Password must be at least 5 characters !</span>
+  </ng-container>
     <input
       type="password"
       name="confirm_password"

@@ -1,6 +1,6 @@
 import { ValidatorFn } from "@angular/forms";
 
-export function emailValidator(domain:string[]): ValidatorFn {
+export function emailValidator(domain:string): ValidatorFn {
     
     const regExp = new RegExp('^[a-zA-Z0-9. _%+-]+@[a-zA-Z0-9]+.[a-z]+$');
     return (control) => {
