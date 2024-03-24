@@ -26,7 +26,7 @@
     <ng-container *ngIf="inputPassword.touched">
         <span class="error-message" *ngIf="inputPassword.errors?.['required']">Password is required !</span>
     </ng-container>
-    <button type="submit">Login</button>
+    <button (click)="login($event, inputEmail.value, inputPassword.value)">Login</button>
   </form>
   <p>Don't have an account? <a routerLink="/register">Register here</a></p>
 </div>
