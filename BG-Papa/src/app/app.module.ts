@@ -16,6 +16,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from './environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { PostsModule } from './posts/posts.module';
+import { PostsListComponent } from './posts-list/posts-list.component';
 
 
 
@@ -24,6 +25,7 @@ import { PostsModule } from './posts/posts.module';
     AppComponent,
     HomeComponent,
     CategoryListComponent,
+    PostsListComponent
   ],
   imports: [
     BrowserModule,
