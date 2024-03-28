@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,8 +38,9 @@ import { PostsListComponent } from './posts-list/posts-list.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
+    HttpClientModule,
     provideFirestore(() => getFirestore()),
-    provideFirebaseApp(() => initializeApp({"projectId":"bg-papa","appId":"1:199505387036:web:d07294a698aa7912ee49d9","storageBucket":"bg-papa.appspot.com","apiKey":"AIzaSyAnclsO3g-FUHxSjUQu6--PKKogdJV6EGw","authDomain":"bg-papa.firebaseapp.com","messagingSenderId":"199505387036"}))
+    provideFirebaseApp(() => initializeApp(environment.firebase))
   ],
   providers: [],
   bootstrap: [AppComponent]
