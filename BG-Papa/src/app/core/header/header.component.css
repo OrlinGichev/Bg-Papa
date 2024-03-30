@@ -1,3 +1,7 @@
+nav {
+  position: sticky;
+}
+
 img {
   border: 0;
 }

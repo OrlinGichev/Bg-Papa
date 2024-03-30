@@ -5,7 +5,7 @@
   width: 100%;
   font: normal 100% 'lucida sans unicode', arial, sans-serif;
   height: 33px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   text-align: center; 
   background: transparent url(./images/transparent_light.png) repeat;

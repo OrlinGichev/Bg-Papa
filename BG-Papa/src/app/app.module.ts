@@ -20,6 +20,7 @@ import { PostsModule } from './posts/posts.module';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { SharedModule } from './shared/shared.module';
 import { ErrorComponent } from './error/error.component';
+import { MainComponent } from './main/main.component';
 
 
 
@@ -29,7 +30,8 @@ import { ErrorComponent } from './error/error.component';
     HomeComponent,
     CategoryListComponent,
     PostsListComponent,
-    ErrorComponent
+    ErrorComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
