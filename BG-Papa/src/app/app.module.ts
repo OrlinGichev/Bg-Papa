@@ -19,6 +19,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { PostsModule } from './posts/posts.module';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { SharedModule } from './shared/shared.module';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -27,11 +28,11 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     HomeComponent,
     CategoryListComponent,
-    PostsListComponent
+    PostsListComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     CoreModule, UserModule,
     FirestoreModule,
@@ -40,6 +41,7 @@ import { SharedModule } from './shared/shared.module';
     AngularFirestoreModule,
     AngularFireStorageModule,
     HttpClientModule,
+    AppRoutingModule,
     provideFirestore(() => getFirestore()),
     provideFirebaseApp(() => initializeApp(environment.firebase))
   ],
