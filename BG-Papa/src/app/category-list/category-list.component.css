@@ -4,7 +4,7 @@ aside {
   padding-top: 2em;
   padding-right: 2em;
   float: right; /* Position the aside section to the right */
-  width: 400px; /* Set the width of the aside section */
+  width: 300px; /* Set the width of the aside section */
   margin-left: 20px; /* Add some space between the main and aside sections */
 }
 

@@ -37,19 +37,3 @@ export class NewPostComponent {
 }
 
 
-//   resetUser(): void {
-//     this.registerForm.reset({
-//       'username': '',
-//       'email': '',
-//       'password': '',
-//       'confirm_password': '',
-//     });
-//   }
-
-//   submitForm() : void{
-//     alert(this.registerForm.value.username);
-//     this.saveUser();
-//     this.resetUser();
-//   }
-// }
-
