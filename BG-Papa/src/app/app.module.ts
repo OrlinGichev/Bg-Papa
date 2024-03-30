@@ -18,6 +18,7 @@ import { environment } from './environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { PostsModule } from './posts/posts.module';
 import { PostsListComponent } from './posts-list/posts-list.component';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -34,7 +35,7 @@ import { PostsListComponent } from './posts-list/posts-list.component';
     FormsModule,
     CoreModule, UserModule,
     FirestoreModule,
-    PostsModule,
+    PostsModule,SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,

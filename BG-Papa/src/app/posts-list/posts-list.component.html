@@ -1,4 +1,7 @@
 <main>
+  <div *ngIf="isLoading">
+    <app-loader/>
+  </div>
     <div  *ngFor="let post of posts" class="forum-topic">
       <h2>Topic Title {{post.title}}</h2>
       <p class="topic-details">Category: {{post.title}}</p>
