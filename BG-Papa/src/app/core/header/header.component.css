@@ -44,10 +44,11 @@ ul li {
   padding: 0 0 4px 5px;
 }
 
-.menu-profileEmail{
+#menu-profileEmail{
   position: fixed;
   top : 2;
   left: 0;
+  color: white;
 }
 
 #cars {

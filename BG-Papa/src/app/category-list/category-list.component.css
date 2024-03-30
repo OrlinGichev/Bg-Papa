@@ -11,9 +11,17 @@ aside {
 img {
   display: block;
   height: auto;
-  width: 100%; /* Ensure images don't exceed the container width */
+  width: 20%; /* Ensure images don't exceed the container width */
 }
 
+.category-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.4em;
+  font-size: 18px;
+}
 .auto {
   background: white;
 }
