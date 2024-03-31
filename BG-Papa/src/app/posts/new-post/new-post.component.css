@@ -4,7 +4,7 @@
     padding: 20px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     max-width: 600px;
-    margin: 0 auto;
+    margin: 25px auto;
 }
 
 .new-topic-container h2 {
@@ -31,17 +31,32 @@
     border-radius: 5px;
 }
 
-button {
-    background-color: #4CAF50;
+.button {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.submit, .cancel{
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    width: 100%;
+    font-size: 16px;   
 }
 
-button:hover {
-    background-color: #45a049;
+.submit {
+    background-color: #4CAF50;
+}
+
+.cancel{
+    background-color: #c53833;
+}
+
+.submit:hover {
+    background-color: #217c26;
+}
+
+.cancel:hover {
+    background-color: #821f0d;
 }
