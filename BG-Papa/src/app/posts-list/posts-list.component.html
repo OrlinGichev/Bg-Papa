@@ -9,6 +9,8 @@
       <p class="topic-details">Author: Author Name</p>
       <p class="topic-details">Comments: 10</p>
       <p class="topic-content">{{post.text}}</p>
+      <button class="forum-topic" (click)="subscribe()" *ngIf="!isSubscribed">Subscribe</button>
+      <button class="forum-topic unsubscribe" (click)="unsubscribe()" *ngIf="isSubscribed">Unsubscribe</button>
     </div>  
     
     <!-- Add more forum topics here -->

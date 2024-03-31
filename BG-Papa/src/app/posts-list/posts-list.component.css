@@ -17,6 +17,7 @@ main {
     margin-bottom: 20px;
     padding: 20px;
     width: 70%; /* Set the width of the forum topics to 70% of the screen */
+    position: relative; /*
   }
   
   .forum-topic h2 {
@@ -29,6 +30,32 @@ main {
   
   .topic-content {
     margin-top: 10px; /* Add some space between the topic details and the topic content */
+  }
+
+  .forum-topic button {
+    position: absolute; /* За да поставим бутона абсолютно вътре в div */
+    bottom: 0; /* Поставя бутона в най-долната част на div */
+    margin-bottom: 10px; /* Отстояние между бутона и долната част на div */
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50; /* Зелен цвят */
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .forum-topic button:hover {
+    background-color: #19761e; /* По-тъмно зелен цвят при ховър */
+  }
+  
+  .forum-topic button.unsubscribe {
+    background-color: #f44336; /* Червен цвят */
+  }
+  
+  .forum-topic button.unsubscribe:hover {
+    background-color: #d32f2f; /* По-тъмно червен цвят при ховър */
   }
   
 
