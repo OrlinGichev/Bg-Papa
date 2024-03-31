@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Post } from '../types/post';
 import { UserService } from '../user/user.service';
+import { UserForAuth } from '../types/user';
 
 @Component({
   selector: 'app-posts-list',
@@ -14,6 +15,7 @@ export class PostsListComponent implements OnInit{
   isLoading : boolean = true;
 
   constructor (private api: ApiService, private userService: UserService) {}
+
 
   get userId(): string {
     return this.userService.user?.id || '';
