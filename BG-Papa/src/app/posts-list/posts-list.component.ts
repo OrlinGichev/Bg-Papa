@@ -16,6 +16,11 @@ export class PostsListComponent implements OnInit{
 
   constructor (private api: ApiService, private userService: UserService) {}
 
+  user: UserForAuth | undefined;
+  
+  get isLogged(): boolean {
+    return !!this.user;
+  }
 
   get userId(): string {
     return this.userService.user?.id || '';

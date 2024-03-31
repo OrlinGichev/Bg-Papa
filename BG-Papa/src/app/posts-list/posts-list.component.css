@@ -3,9 +3,6 @@ main {
   width: 90%;
   justify-items: center;
   margin: 2em ;
-  /* margin-top: 2em; */
-  /* margin-left: 2em;
-  margin-right: 2em; */
   gap: 1em;
   float: left;
 }
@@ -17,6 +14,7 @@ main {
     margin-bottom: 20px;
     padding: 20px;
     width: 70%; /* Set the width of the forum topics to 70% of the screen */
+    height: auto;
     position: relative; /*
   }
   

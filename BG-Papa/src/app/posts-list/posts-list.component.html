@@ -4,13 +4,15 @@
   </div>
     <div  *ngFor="let post of posts" class="forum-topic">
       <h2>Title : {{post.title}}</h2>
-      <p class="topic-details">Category: {{post.title}}</p>
+      <p class="topic-details">Category: {{post.category}}</p>
       <p class="topic-details">Created: March 17, 2024</p>
       <p class="topic-details">Author: Author Name</p>
       <p class="topic-details">Comments: 10</p>
-      <p class="topic-content">{{post.text}}</p>
-      <button class="forum-topic" (click)="subscribe()" *ngIf="!isSubscribed">Subscribe</button>
-      <button class="forum-topic unsubscribe" (click)="unsubscribe()" *ngIf="isSubscribed">Unsubscribe</button>
+      <button class="forum-topic" routerLink="/details">Detail</button>
+      <ng-container *ngIf="isLogged">
+        <button class="forum-topic" (click)="subscribe()" *ngIf="!isSubscribed">Subscribe</button>
+        <button class="forum-topic unsubscribe" (click)="unsubscribe()" *ngIf="isSubscribed">Unsubscribe</button>
+      </ng-container>
     </div>  
     
     <!-- Add more forum topics here -->
