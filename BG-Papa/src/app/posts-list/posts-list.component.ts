@@ -12,12 +12,13 @@ import { UserForAuth } from '../types/user';
 export class PostsListComponent implements OnInit{
 
   posts : Post[] | null = [];
+  currenetPost: Post | null = null;
   isLoading : boolean = true;
 
   constructor (private api: ApiService, private userService: UserService) {}
 
   user: UserForAuth | undefined;
-  
+
   get isLogged(): boolean {
     return !!this.user;
   }
@@ -44,6 +45,6 @@ export class PostsListComponent implements OnInit{
     this.isSubscribed = false;
     return this.isSubscribed;
 
-  }
+  }  
 
 }

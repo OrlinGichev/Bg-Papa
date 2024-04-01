@@ -5,10 +5,7 @@ import { AuthActivate } from '../guards/auth.activate';
 import { CurrentPostComponent } from './current-post/current-post.component';
 
 const routes: Routes = [
-  { path: 'details',
-    component: CurrentPostComponent,
-
-   },
+  
   { path: 'new',
    component: NewPostComponent,
    canActivate: [AuthActivate]

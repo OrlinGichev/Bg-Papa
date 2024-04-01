@@ -20,7 +20,8 @@
   
   .post-category,
   .post-author,
-  .post-comments {
+  .post-comments,
+  .post-text {
     margin-bottom: 5px;
   }
   

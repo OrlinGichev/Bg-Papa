@@ -1,6 +1,8 @@
-import { Component, ViewChild, inject } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
-import { addDoc, collection } from 'firebase/firestore';
+import { Component, ViewChild} from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-new-post',
@@ -9,31 +11,38 @@ import { addDoc, collection } from 'firebase/firestore';
 })
 export class NewPostComponent {
 
-  @ViewChild("newPostForm") newPostForm: any;
+  @ViewChild("newPostForm") newPostForm: FormGroup;
 
-  firestore:Firestore = inject(Firestore);
 
-  savePost() : void {
-    const postCollection = collection(this.firestore, 'posts');
-    addDoc(postCollection, {
-      'title': this.newPostForm.value.title,
-      'category' : this.newPostForm.value.category,
-      'content': this.newPostForm.value.content
-    });
-  }
+  constructor(private fb: FormBuilder, private afs : AngularFirestore){
 
-  resetForm(): void {
-    this.newPostForm.reset({
-      'title': '',
-      'category' : '',
-      'content': ''
-    });
-  }
-
-  submitForm(): void {      
-      this.savePost();
-      this.resetForm();
-    }
+    this.newPostForm = this.fb.group({
+    title: [''],
+    category: [''],
+    text: ['']
+  });
 }
+
+savePost(): void {
+  const post = {
+    title: this.newPostForm.value.title,
+    category: this.newPostForm.value.category,
+    text: this.newPostForm.value.text,
+    id: this.afs.createId()
+  };
+  
+  this.afs.collection('posts').add(post);
+  this.resetForm();
+}
+resetForm(): void {
+  this.newPostForm.reset();
+}
+
+submitForm(): void {
+  this.savePost();
+}
+}
+
+
 
 

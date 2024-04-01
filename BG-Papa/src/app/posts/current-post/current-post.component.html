@@ -1,10 +1,11 @@
-<div class="posts-container">
+<div class="posts-container" *ngIf="post">
     <!-- Постовете се генерират динамично от Angular, затова ги показваме само като пример -->
-    <div class="post">
-      <h2 class="post-title">Title</h2>
-      <p class="post-category">Category: Category</p>
-      <p class="post-author">Author: Author Name</p>
-      <p class="post-comments">Comments: 10</p>
+    <div class="post" >
+      <h2 class="post-title" name="title">{{post.title}}</h2>
+      <p class="post-category" name="category">Category: {{post.category}}</p>
+      <p class="post-author" name="author">Author: Author Name</p>
+      <p class="post-text" name="text">Text: {{post.text}}</p>
+      <p class="post-comments" name="comments">Comments: 10</p>
       <div class="post-buttons">
         <button class="edit-button">Edit</button>
         <button class="delete-button">Delete</button>
