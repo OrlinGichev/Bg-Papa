@@ -28,10 +28,10 @@ savePost(): void {
     title: this.newPostForm.value.title,
     category: this.newPostForm.value.category,
     text: this.newPostForm.value.text,
-    id: this.afs.createId()
+    _id: this.afs.createId()
   };
   
-  this.afs.collection('posts').add(post);
+  this.afs.collection('posts').doc(post._id).set(post);
   this.resetForm();
 }
 resetForm(): void {

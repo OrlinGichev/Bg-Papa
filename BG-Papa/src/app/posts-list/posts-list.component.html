@@ -8,7 +8,7 @@
       <p class="topic-details">Created: March 17, 2024</p>
       <p class="topic-details">Author: Author Name</p>
       <p class="topic-details">Comments: 10</p>
-      <button class="forum-topic" [routerLink]="['/posts', post.id]">Detail</button>
+      <button class="forum-topic" [routerLink]="['/posts', post._id]">Detail</button>
       <ng-container *ngIf="isLogged">
         <button class="forum-topic" (click)="subscribe()" *ngIf="!isSubscribed">Subscribe</button>
         <button class="forum-topic unsubscribe" (click)="unsubscribe()" *ngIf="isSubscribed">Unsubscribe</button>

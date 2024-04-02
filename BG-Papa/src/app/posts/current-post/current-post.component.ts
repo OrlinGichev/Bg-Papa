@@ -10,19 +10,19 @@ import { Post } from 'src/app/types/post';
 })
 export class CurrentPostComponent implements OnInit {
 
-  post : Post | undefined;
+  post = {} as Post ;
   postId: string = ''; 
 
   constructor(private apiService:ApiService, private route:ActivatedRoute) {}
 
   ngOnInit():void {    
-    this.route.params.subscribe(params => {
-      this.postId = params['id'];
-      console.log(this.postId);
+    this.route.params.subscribe(data=> {
+      this.postId = data['id'];
+    });
+    this.route.params.subscribe(params => {    
       this.apiService.getCurrentPost(this.postId).subscribe(
         post => {    
           this.post = post
-          console.log(this.post);
         })
     });
   }

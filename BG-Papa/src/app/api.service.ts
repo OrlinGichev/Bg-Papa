@@ -21,7 +21,7 @@ export class ApiService implements OnInit{
   }
 
   getCurrentPost(postId: string): Observable<any> {  
-    console.log(this.firestore.collection('posts').doc('Y56bzNJzVdsMcrgHBivf'));  
+     
     return this.firestore.collection('posts').doc(postId).valueChanges();
   }
   
