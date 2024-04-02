@@ -44,11 +44,13 @@
       type="password"
       name="confirm_password"
       placeholder="Confirm Password"
-      ngModel
+      [(ngModel)] = "confirmPassword"
       required
     />
-    <span class="error-message"></span>
-    <button (click)="submitForm()">Register</button>
+    <ng-container *ngIf="!isMatch">
+      <span class="error-message">Password doesn't match !</span>
+    </ng-container>
+    <button (click)="submitForm()" [disabled]="!registerForm.valid || !isMatch">Register</button>
   </form>
   <p>Already have an account? <a routerLink="/login">Login here</a></p>
 </div>
