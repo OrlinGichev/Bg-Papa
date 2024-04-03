@@ -31,7 +31,7 @@
       type="password"
       name="password"
       placeholder="Password"
-      ngModel
+      [(ngModel)] = "password"
       #inputPassword = "ngModel"
       required
       minlength="5"
@@ -44,10 +44,12 @@
       type="password"
       name="confirm_password"
       placeholder="Confirm Password"
+      ngModel
       [(ngModel)] = "confirmPassword"
       required
+      (input)="checkPasswordMatch()"
     />
-    <ng-container *ngIf="!isMatch">
+    <ng-container *ngIf="!isMatch && registerForm.touched">
       <span class="error-message">Password doesn't match !</span>
     </ng-container>
     <button (click)="submitForm()" [disabled]="!registerForm.valid || !isMatch">Register</button>

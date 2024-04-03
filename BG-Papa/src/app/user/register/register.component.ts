@@ -37,13 +37,17 @@ export class RegisterComponent {
       'password': '',
       'confirm_password': '',
     });
-  }
+  };
+
+  checkPasswordMatch() {
+    this.isMatch = this.password === this.confirmPassword;
+  };
 
   submitForm() : void{
-    console.log(this.registerForm.valid);
     if (this.password !== this.confirmPassword) {
-        this.isMatch = false;
+      this.isMatch = false;
     } else {
+        this.isMatch = true;
         this.saveUser();
         this.resetUser();
         this.router.navigate(['/login']);
