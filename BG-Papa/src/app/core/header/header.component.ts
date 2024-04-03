@@ -14,8 +14,9 @@ export class HeaderComponent {
     return this.userService.isLogged
   }
 
-  get profileEmail(): string {
-    return this.userService.user?.email || ''
+  get profileUsername(): string {
+    this.userService.getUserInfo
+    return this.userService.user?.username || ''
   }
 
   logout() {

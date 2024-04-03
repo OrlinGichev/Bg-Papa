@@ -15,7 +15,13 @@ export class LoginComponent {
     if (form.invalid){
       return
     }
-    this.UserService.login();
+    this.UserService.login(form.value.email, form.value.password).subscribe((isLoggedIn) =>{
+      if (isLoggedIn){
+        console.log('Login successful');
+      } else{
+        console.log('Login failed');
+      }
+    });
     this.router.navigate(['/home']);
   }
 }

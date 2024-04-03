@@ -23,6 +23,12 @@
         required
         [appEmail]="inputEmail.value" 
     />
+    <input 
+        type="text" 
+        name="interests" 
+        placeholder="Interests" 
+        ngModel
+    />
     <ng-container *ngIf="inputEmail.touched">
       <span class="error-message" *ngIf="inputEmail.errors?.['required']">Email is required !</span>
       <span class="error-message" *ngIf="inputEmail.errors?.['emailValidator']">Email is not valid !</span>
