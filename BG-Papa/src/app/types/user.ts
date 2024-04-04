@@ -3,5 +3,5 @@ export interface UserForAuth {
     email: string,
     password: string,
     interests: string,
-    id: string,
+    _id: string,
 }

@@ -19,7 +19,7 @@
             <li class="menu-item menu-register"><a routerLink="/register">Register</a></li>
           </div>
           <div *ngIf="isLoggedIn">
-            <li class="menu-item" id="menu-profileEmail"><a routerLink="#">Profile :{{profileUsername}}</a></li>
+            <li class="menu-item" id="menu-profileEmail"><a routerLink="#">Profile :{{this.username}}</a></li>
             <li class="menu-item menu-logout" (click)="logout()"><a routerLink="/logout">Logout</a></li>
           </div>
         </ul>

@@ -11,7 +11,7 @@ import { QuerySnapshot, DocumentData } from '@angular/fire/firestore';
 })
 export class UserService {
   private user$$ = new BehaviorSubject<UserForAuth | undefined>(undefined);
-  private user$ = this.user$$.asObservable();
+  public user$ = this.user$$.asObservable();
 
   user: UserForAuth | undefined;
   USER_KEY = '[user]';
@@ -45,7 +45,7 @@ export class UserService {
             if (user.password === password) {
               this.user$$.next(user);
               // Запазване на данните на потребителя в localStorage
-              localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+              localStorage.setItem('currentUser', JSON.stringify(user));
               loginSuccessful = true;
             }
           }); 
@@ -58,6 +58,23 @@ export class UserService {
         return of(false);
       })
     );
+  }
+
+  setUser(user: UserForAuth) {
+    this.user$$.next(user);
+  }
+
+  getUserKeyFromLocalStorage(key: string): string | undefined {
+    const userData = localStorage.getItem('currentUser');
+    if (userData) {
+      const currentUser = JSON.parse(userData);
+      return currentUser[key];
+    }
+    return undefined;
+  }
+
+  getUserObservable(): Observable<UserForAuth | undefined> {
+    return this.user$$.asObservable();
   }
 
   logout() {

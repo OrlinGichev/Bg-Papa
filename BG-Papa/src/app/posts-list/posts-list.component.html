@@ -5,8 +5,8 @@
     <div  *ngFor="let post of posts" class="forum-topic">
       <h2>Title : {{post.title}}</h2>
       <p class="topic-details">Category: {{post.category}}</p>
-      <p class="topic-details">Created: March 17, 2024</p>
-      <p class="topic-details">Author: Author Name</p>
+      <p class="topic-details">Created at: {{post.created_at}}</p>
+      <p class="topic-details">Author: {{post.authorName}}</p>
       <p class="topic-details">Comments: 10</p>
       <button class="forum-topic" [routerLink]="['/posts', post._id]">Detail</button>
       <ng-container *ngIf="isLogged">

@@ -24,7 +24,7 @@ export class PostsListComponent implements OnInit{
   }
 
   get userId(): string {
-    return this.userService.user?.id || '';
+    return this.userService.user?._id || '';
   }
 
   isSubscribed : boolean = false;
