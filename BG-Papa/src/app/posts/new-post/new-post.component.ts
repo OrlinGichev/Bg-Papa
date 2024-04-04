@@ -2,7 +2,6 @@ import { Component, ViewChild} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Timestamp } from 'firebase/firestore';
 import { UserForAuth } from 'src/app/types/user';
 import { UserService } from 'src/app/user/user.service';
 
@@ -29,8 +28,7 @@ export class NewPostComponent {
 }
 
 currentUser: UserForAuth | undefined
-now = new Date();
-timestamp = Timestamp.fromDate(this.now)
+
 
 savePost(): void {
   this.userService.getUserObservable().subscribe((user) => {
@@ -43,11 +41,12 @@ savePost(): void {
     authorName: this.currentUser?.username,
     authorId: this.currentUser?._id,
     _id: this.afs.createId(),
-    created_at: this.timestamp
+    created_at: new Date(),
   };
   
   this.afs.collection('posts').doc(post._id).set(post);
   this.resetForm();
+
 }
 resetForm(): void {
   this.newPostForm.reset();

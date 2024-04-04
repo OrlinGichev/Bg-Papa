@@ -47,4 +47,14 @@ export class PostsListComponent implements OnInit{
 
   }  
 
+  formatTimestamp(timestamp: any): string {
+    if (timestamp && timestamp.seconds && timestamp.nanoseconds) {
+      const milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000;
+      const date = new Date(milliseconds);
+      return date.toLocaleDateString(); // Връща само датата без час
+    } else {
+      return 'Невалидна дата';
+    }
+  }
+
 }
