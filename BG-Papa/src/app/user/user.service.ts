@@ -116,16 +116,14 @@ export class UserService {
     );
   }
 
-  updateUserData(userData: any): Observable<void> {
-    const userId = userData.id; 
-    delete userData.id; // изтриваме id, тъй като не искаме да го обновяваме в документа
-
+  updateInterests(userId: string, newInterests: string): Observable<void> {
     const userDocRef = this.angularFirestore.collection('users').doc(userId);
+    const interestsUpdate = { interests: newInterests };
     
-    return from(userDocRef.update(userData))
+    return from(userDocRef.update(interestsUpdate))
       .pipe(
         catchError((error) => {
-          console.error('Error updating user data:', error);
+          console.error('Error updating user interests:', error);
           throw error;
         })
       );

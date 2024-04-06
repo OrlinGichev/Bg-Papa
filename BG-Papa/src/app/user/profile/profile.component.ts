@@ -34,15 +34,16 @@ export class ProfileComponent implements OnInit  {
   }
 
   saveChanges(): void {
-    // Save changes to database (assuming you have a UserService method for this)
-    this.userService.updateUserData(this.editedUserData).subscribe(() => {
-      // On successful update, update local data and exit edit mode
-      this.userData = {...this.editedUserData};
+    const userId = this.userData._id;
+    const newInterests = this.editedUserData.interests;
+  
+    this.userService.updateInterests(userId, newInterests).subscribe(() => {
+      
+      this.userData.interests = newInterests;
       this.isEditing = false;
       localStorage.setItem('currentUser', JSON.stringify(this.userData));
     }, (error) => {
-      console.error('Error updating user data:', error);
-      // Handle error, show user appropriate message
+      console.error('Error updating user interests:', error);
     });
   }
   
