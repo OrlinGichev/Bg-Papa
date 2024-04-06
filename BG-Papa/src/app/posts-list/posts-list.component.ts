@@ -25,7 +25,7 @@ export class PostsListComponent implements OnInit{
     return this.userService.user?._id || '';
   }
 
-  isSubscribed : boolean = false;
+
 
   ngOnInit (): void{    
 
@@ -38,16 +38,7 @@ export class PostsListComponent implements OnInit{
       })
   }
 
-  subscribe(){
-    this.isSubscribed = true;
-    return this.isSubscribed;
-  }
-
-  unsubscribe(){
-    this.isSubscribed = false;
-    return this.isSubscribed;
-
-  }  
+  
 
   formatTimestamp(timestamp: any): string {
     if (timestamp && timestamp.seconds && timestamp.nanoseconds) {

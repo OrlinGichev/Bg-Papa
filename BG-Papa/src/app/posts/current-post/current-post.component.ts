@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Post } from 'src/app/types/post';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-current-post',
@@ -11,9 +12,11 @@ import { Post } from 'src/app/types/post';
 export class CurrentPostComponent implements OnInit {
 
   post = {} as Post ;
-  postId: string = ''; 
+  postId: string = '';
+  userId: string | undefined;
+  isSubscribed : boolean = false; 
 
-  constructor(private apiService:ApiService, private route:ActivatedRoute) {}
+  constructor(private apiService:ApiService, private route:ActivatedRoute, private userService: UserService) {}
 
   ngOnInit():void {    
     this.route.params.subscribe(data=> {
@@ -25,6 +28,17 @@ export class CurrentPostComponent implements OnInit {
           this.post = post
         })
     });
+    this.userId = this.userService.getUserKeyFromLocalStorage("_id");
   }
+
+  subscribe(){
+    this.isSubscribed = true;
+    return this.isSubscribed;
+  }
+
+  unsubscribe(){
+    this.isSubscribed = false;
+    return this.isSubscribed;
+  }  
 
 }

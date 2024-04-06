@@ -3,13 +3,20 @@
     <div class="post" >
       <h2 class="post-title" name="title">{{post.title}}</h2>
       <p class="post-category" name="category">Category: {{post.category}}</p>
-      <p class="post-author" name="author">Author: Author Name</p>
+      <p class="post-author" name="author">Author: {{post.authorName}}</p>
       <p class="post-text" name="text">Text: {{post.text}}</p>
       <p class="post-comments" name="comments">Comments: 10</p>
       <div class="post-buttons">
-        <button class="edit-button">Edit</button>
-        <button class="delete-button">Delete</button>
+        <ng-container *ngIf="userId === post.authorId">
+          <button class="edit-button">Edit</button>
+          <button class="delete-button">Delete</button>
+        </ng-container>
+        <ng-container *ngIf="userId !== post.authorId">
+          <button class="forum-topic" (click)="subscribe()" *ngIf="!isSubscribed">Subscribe</button>
+          <button class="forum-topic unsubscribe" (click)="unsubscribe()" *ngIf="isSubscribed">Unsubscribe</button>
+        </ng-container>
       </div>
+      
     </div>
   </div>
   
@@ -35,6 +42,5 @@
         <p class="comment-text">Comment 2</p>
         <p class="comment-author">Author: Comment Author</p>
       </div>
-    <!-- Добавете още контейнери за коментарите, ако е необходимо -->
   </div>
   
