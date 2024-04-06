@@ -21,6 +21,9 @@
     </div>
   </form>
   <div class="buttons">
-    <button *ngIf="!isEditing" (click)="editProfile()">Edit</button>
+    <ng-container *ngIf="!isEditing">
+    <button class="save" (click)="editProfile()">Edit</button>
+    <button class="cancel" (click)="deleteProfile()">Delete</button>
+  </ng-container>
   </div>
 </div>

@@ -86,7 +86,6 @@ export class UserService {
   }
 
   logout() {
-    // Изчистване на данните за потребителя от localStorage
     localStorage.removeItem('currentUser');
     this.user$$.next(undefined);
   }
@@ -127,5 +126,15 @@ export class UserService {
           throw error;
         })
       );
+  }
+
+  deleteProfile(userId: string): Observable<void> {
+    const userDocRef = this.angularFirestore.collection('users').doc(userId);
+    return from(userDocRef.delete()).pipe(
+      catchError((error) => {
+        console.error('Error deleting user profile:', error);
+        throw error;
+      })
+    );
   }
 }

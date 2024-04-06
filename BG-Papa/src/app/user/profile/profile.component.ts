@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { UserForAuth } from 'src/app/types/user';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -46,5 +47,19 @@ export class ProfileComponent implements OnInit  {
       console.error('Error updating user interests:', error);
     });
   }
+
+  deleteProfile(): void {
+    this.userService.deleteProfile(this.userData._id).pipe(
+      map(() => {
+        return this.userService.logout();
+      })
+    ).subscribe(() => {
+      console.log('User profile deleted successfully and logged out.');
+      this.router.navigate(['/home']);
+    }, (error) => {
+      console.error('Error deleting user profile:', error);
+    });
+  }
+
   
 }
