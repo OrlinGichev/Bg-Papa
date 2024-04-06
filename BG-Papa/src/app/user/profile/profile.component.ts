@@ -28,16 +28,22 @@ export class ProfileComponent implements OnInit  {
     this.isEditing = true;
   }
 
-  saveChanges(): void {
-    this.userData = {...this.editedUserData};
+  cancelEdit(): void {
     this.isEditing = false;
-    localStorage.setItem('currentUser', JSON.stringify(this.userData));
+    this.editedUserData = {...this.userData}; // Restore original data
   }
 
-
-  // name:string | undefined = this.userService.getUserKeyFromLocalStorage('username');
-  // email:string | undefined = this.userService.getUserKeyFromLocalStorage('email');
-  // interests:string | undefined = this.userService.getUserKeyFromLocalStorage('interests');
-
+  saveChanges(): void {
+    // Save changes to database (assuming you have a UserService method for this)
+    this.userService.updateUserData(this.editedUserData).subscribe(() => {
+      // On successful update, update local data and exit edit mode
+      this.userData = {...this.editedUserData};
+      this.isEditing = false;
+      localStorage.setItem('currentUser', JSON.stringify(this.userData));
+    }, (error) => {
+      console.error('Error updating user data:', error);
+      // Handle error, show user appropriate message
+    });
+  }
   
 }

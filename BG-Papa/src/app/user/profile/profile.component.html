@@ -1,13 +1,22 @@
 <div class="profile-container">
-    <h2>My Profile</h2>
-    <div class="profile-info">
-      <p><strong>Username:</strong> {{ userData.username }}</p>
-      <p><strong>Email:</strong> {{ userData.email }}</p>
-      <p><strong>Interests:</strong> {{ userData.interests }}</p>
-    </div>
-    <div class="buttons">
-      <button (click)="editProfile()">Edit</button>
-      <button routerLink="/posts">Cancel</button>
-    </div>
+  <h2>My Profile</h2>
+  <div *ngIf="!isEditing" class="profile-info">
+    <p><strong>Username:</strong> {{ userData.username }}</p>
+    <p><strong>Email:</strong> {{ userData.email }}</p>
+    <p><strong>Interests:</strong> {{ userData.interests }}</p>
   </div>
-  
+  <form *ngIf="isEditing" (ngSubmit)="saveChanges()" class="profile-info">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="editedUserData.username" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="editedUserData.email" required>
+    <label for="interests">Interests:</label>
+    <input type="text" id="interests" name="interests" [(ngModel)]="editedUserData.interests">
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+  <div class="buttons">
+    <button *ngIf="!isEditing" (click)="editProfile()">Edit</button>
+    <button routerLink="/posts">Back</button>
+  </div>
+</div>

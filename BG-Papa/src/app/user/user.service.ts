@@ -4,6 +4,7 @@ import { Observable, of, from, BehaviorSubject } from 'rxjs';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { Firestore, collection, query, where, getDocs } from '@angular/fire/firestore';
 import { QuerySnapshot, DocumentData } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Injectable({
@@ -16,17 +17,24 @@ export class UserService {
   user: UserForAuth | undefined;
   USER_KEY = '[user]';
 
-  constructor(private firestore: Firestore) {
+   // Дефиниране на currentUser на ниво на класа
+   currentUser: UserForAuth | undefined;
+
+  constructor(private angularFirestore: AngularFirestore, private firestore :Firestore) {
     // Проверка за наличие на потребител в localStorage при инстанциране на сервиса
     const savedUser = localStorage.getItem(this.USER_KEY);
     if (savedUser) {
-      this.user$$ = new BehaviorSubject<UserForAuth | undefined>(JSON.parse(savedUser));
+      // Задаване на currentUser при инициализация на сервиса
+      this.currentUser = JSON.parse(savedUser);
+      this.user$$.next(this.currentUser);
     }
   }
 
   get isLogged(): boolean {
     return !!this.user$$.value;
   }
+
+  
 
   login(email: string, password: string): Observable<boolean> {
     const usersRef = collection(this.firestore, 'users');
@@ -79,13 +87,12 @@ export class UserService {
 
   logout() {
     // Изчистване на данните за потребителя от localStorage
-    localStorage.removeItem(this.USER_KEY);
+    localStorage.removeItem('currentUser');
     this.user$$.next(undefined);
   }
 
-  getUserInfo() {
-    const currentUser = this.user$$.getValue();
-    console.log(currentUser?.username); // Тук ще видите обекта на текущия потребител в конзолата
+  getUserInfo(): Observable<UserForAuth | undefined> {
+    return this.user$$.asObservable();
   }
 
 
@@ -107,5 +114,20 @@ export class UserService {
       }),
       catchError(() => of(false))
     );
+  }
+
+  updateUserData(userData: any): Observable<void> {
+    const userId = userData.id; // предполагаме, че имаш поле id в обекта userData
+    delete userData.id; // изтриваме id, тъй като не искаме да го обновяваме в документа
+
+    const userDocRef = this.angularFirestore.collection('users').doc(userId);
+    
+    return from(userDocRef.update(userData))
+      .pipe(
+        catchError((error) => {
+          console.error('Error updating user data:', error);
+          throw error;
+        })
+      );
   }
 }

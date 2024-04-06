@@ -11,7 +11,7 @@
       <div id="menubar">
         <ul id="menu">
           <!-- останалите елементи -->
-          <li class="menu-item"><a href="/home">Home</a></li>
+          <li class="menu-item"><a routerLink="/home">Home</a></li>
           <li class="menu-item"><a routerLink="/posts">Posts</a></li>
           <li class="menu-item"><a routerLink="/new">New Post</a></li>
           <div *ngIf="!isLoggedIn">
@@ -20,7 +20,7 @@
           </div>
           <div *ngIf="isLoggedIn">
             <li class="menu-item" id="menu-profileEmail"><a routerLink="/profile">Profile :{{this.username}}</a></li>
-            <li class="menu-item menu-logout" (click)="logout()"><a routerLink="/logout">Logout</a></li>
+            <li class="menu-item menu-logout" (click)="logout()"><a routerLink="/home">Logout</a></li>
           </div>
         </ul>
       </div>

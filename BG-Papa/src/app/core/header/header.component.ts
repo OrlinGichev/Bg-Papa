@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserForAuth } from 'src/app/types/user';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -9,20 +8,20 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor( private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
-  // currentUser: UserForAuth | undefined
   username: string | undefined;
 
   get isLoggedIn(): boolean {
-    return this.userService.isLogged
+    return this.userService.isLogged;
   }
 
   ngOnInit() {
-    this.username = this.userService.getUserKeyFromLocalStorage('username');
+    this.userService.getUserInfo().subscribe(currentUser => {
+      this.username = currentUser?.username;
+    });
   }
  
-
   logout() {
     this.userService.logout();
     this.router.navigate(['/home']);
