@@ -15,7 +15,7 @@ main {
     padding: 20px;
     width: 70%; /* Set the width of the forum topics to 70% of the screen */
     height: auto;
-    position: relative; /*
+    position: relative; 
   }
   
   .forum-topic h2 {
@@ -24,16 +24,17 @@ main {
   
   .topic-details {
     font-weight: bold;
+    margin-bottom: 35px;
   }
   
   .topic-content {
-    margin-top: 10px; /* Add some space between the topic details and the topic content */
+    margin-top: 10px; 
   }
 
   .forum-topic button {
-    position: absolute; /* За да поставим бутона абсолютно вътре в div */
-    bottom: 0; /* Поставя бутона в най-долната част на div */
-    margin-bottom: 10px; /* Отстояние между бутона и долната част на div */
+    position: absolute;
+    bottom: 0;   
+    margin-bottom: 10px; 
     padding: 8px 16px;
     border: none;
     border-radius: 4px;

@@ -17,14 +17,11 @@ export class UserService {
   user: UserForAuth | undefined;
   USER_KEY = '[user]';
 
-   // Дефиниране на currentUser на ниво на класа
    currentUser: UserForAuth | undefined;
 
   constructor(private angularFirestore: AngularFirestore, private firestore :Firestore) {
-    // Проверка за наличие на потребител в localStorage при инстанциране на сервиса
     const savedUser = localStorage.getItem(this.USER_KEY);
     if (savedUser) {
-      // Задаване на currentUser при инициализация на сервиса
       this.currentUser = JSON.parse(savedUser);
       this.user$$.next(this.currentUser);
     }
@@ -43,16 +40,13 @@ export class UserService {
     return from(getDocs(q)).pipe(
       switchMap((querySnapshot: QuerySnapshot<DocumentData>) => {
         if (querySnapshot.empty) {
-          // Няма потребител с такъв email
           return of(false);
         } else {
           let loginSuccessful = false;
           querySnapshot.forEach((doc) => {
             const user = doc.data() as UserForAuth;
-            // Проверка за съвпадение на паролата
             if (user.password === password) {
               this.user$$.next(user);
-              // Запазване на данните на потребителя в localStorage
               localStorage.setItem('currentUser', JSON.stringify(user));
               loginSuccessful = true;
             }

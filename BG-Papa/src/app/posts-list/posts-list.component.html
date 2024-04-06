@@ -9,7 +9,7 @@
       <p class="topic-details">Author: {{post.authorName}}</p>
       <p class="topic-details">Comments: 10</p>
       <button class="forum-topic" [routerLink]="['/posts', post._id]">Detail</button>
-      <ng-container *ngIf="isLogged">
+      <ng-container *ngIf="isLoggedIn">
         <button class="forum-topic" (click)="subscribe()" *ngIf="!isSubscribed">Subscribe</button>
         <button class="forum-topic unsubscribe" (click)="unsubscribe()" *ngIf="isSubscribed">Unsubscribe</button>
       </ng-container>

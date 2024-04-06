@@ -14,14 +14,12 @@ export class PostsListComponent implements OnInit{
   posts : Post[] | null = [];
   currenetPost: Post | null = null;
   isLoading : boolean = true;
+  isLoggedIn : boolean = false;
 
   constructor (private api: ApiService, private userService: UserService) {}
 
   user: UserForAuth | undefined;
-
-  get isLogged(): boolean {
-    return !!this.user;
-  }
+  
 
   get userId(): string {
     return this.userService.user?._id || '';
@@ -30,8 +28,12 @@ export class PostsListComponent implements OnInit{
   isSubscribed : boolean = false;
 
   ngOnInit (): void{    
-      this.api.getPostsList().subscribe(posts =>{
-        this.posts = posts;
+
+    this.userService.getUserObservable().subscribe(user => {
+      this.isLoggedIn = !!user
+    })
+      this.api.getPostsList().subscribe(posts =>{      
+        this.posts = posts;   
         this.isLoading = false;
       })
   }
@@ -53,7 +55,7 @@ export class PostsListComponent implements OnInit{
       const date = new Date(milliseconds);
       return date.toLocaleDateString(); // Връща само датата без час
     } else {
-      return 'Невалидна дата';
+      return 'Invalid date';
     }
   }
 
