@@ -117,7 +117,7 @@ export class UserService {
   }
 
   updateUserData(userData: any): Observable<void> {
-    const userId = userData.id; // предполагаме, че имаш поле id в обекта userData
+    const userId = userData.id; 
     delete userData.id; // изтриваме id, тъй като не искаме да го обновяваме в документа
 
     const userDocRef = this.angularFirestore.collection('users').doc(userId);

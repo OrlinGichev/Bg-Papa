@@ -16,6 +16,20 @@
   .profile-info p {
     margin-bottom: 10px;
   }
+
+  .btn {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2em;
+  }
+
+  .save{
+    background: rgb(20, 158, 20);
+  }
+
+  .cancel{
+    background: rgb(183, 38, 38);
+  }
   
   .buttons {
     margin-top: 20px;
