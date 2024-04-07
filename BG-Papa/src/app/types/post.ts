@@ -1,5 +1,6 @@
 import { Comment } from "./Comment";
 
+
 export interface Post {
     title: string,
     category: string,

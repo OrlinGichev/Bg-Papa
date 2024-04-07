@@ -26,9 +26,7 @@ export class ApiService implements OnInit{
     return this.firestore.collection('posts').doc(postId).valueChanges();
   }
 
-  getPostComments(postId: string): Observable<Comment[]> {
-    return this.firestore.collection<Comment>('posts').doc(postId).collection<Comment>('comments').valueChanges();
-  }
+ 
   
   getPostCountByCategory(category: string): Observable<number> {
     return this.firestore.collection<Post>('posts', ref => ref.where('category', '==', category)).valueChanges().pipe(

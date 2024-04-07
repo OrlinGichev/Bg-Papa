@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/api.service';
 import { Comment } from 'src/app/types/Comment';
 import { Post } from 'src/app/types/post';
 import { UserService } from 'src/app/user/user.service';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-current-post',
@@ -21,7 +22,7 @@ export class CurrentPostComponent implements OnInit {
   editingPost = false;
   comments: Comment[] = [];
 
-  constructor(private apiService:ApiService, private route:ActivatedRoute, private userService: UserService, private firestore : AngularFirestore, private router: Router) {}
+  constructor(private apiService:ApiService, private route:ActivatedRoute, private userService: UserService, private firestore : AngularFirestore, private router: Router, private postService: PostService) {}
 
   ngOnInit():void {    
     this.route.params.subscribe(data=> {
@@ -68,7 +69,7 @@ export class CurrentPostComponent implements OnInit {
   } 
 
   getPostComments() {
-    this.apiService.getPostComments(this.postId).subscribe(comments => {
+    this.postService.getPostComments(this.postId).subscribe(comments => {
       this.comments = comments;
     });
   }

@@ -14,12 +14,14 @@
   
 
     <div class="comment-list">
-      <div *ngIf="comments.length === 0" class="no-comments-message">No comments yet!</div>
-      <div *ngFor="let comment of comments" class="comment">
-        <p class="comment-author">Author: {{ comment.author }}</p>
-        <p class="comment-date">Date: {{ comment.date }}</p>
-        <p class="comment-text">Text: {{ comment.text }}</p>
-      </div>
+      <div *ngIf="!comments || comments.length === 0" class="no-comments-message">No comments yet!</div>
+      <ng-container *ngIf="comments.length > 0">
+        <div *ngFor="let comment of comments" class="comment">
+          <p class="comment-author">Author: {{ comment.author }}</p>
+          <p class="comment-date">Date: {{ comment.date }}</p>
+          <p class="comment-text">Text: {{ comment.text }}</p>
+        </div>
+    </ng-container>
     </div>
   </div>
   

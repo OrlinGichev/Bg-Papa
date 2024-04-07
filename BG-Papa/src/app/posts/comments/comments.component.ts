@@ -1,44 +1,51 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostService } from '../post.service';
+import { Comment } from 'src/app/types/Comment';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent {
+export class CommentsComponent implements OnInit {
 
-  @Input() post: any;
+  @Input() userId!: string ;
+  @Input() postId: string = '';
   username: string='';
   currentDate: Date= new Date;
   commentText: string='';
+  comments: Comment[] = [];
 
   constructor(private router: Router, private postService: PostService) {}
 
-  @Input() comments: any[] = [];
+  ngOnInit(): void {
+    this.getPostComments();
+  }
+
+  getPostComments() {
+    this.postService.getPostComments(this.postId).subscribe(comments => {
+      this.comments = comments;
+    
+    });
+    
+  }
 
   saveComment(): void {
     const newComment = {
       author: this.username,
       date: this.currentDate,
-      text: this.commentText
+      text: this.commentText,
+      postId: this.postId,
+      author_id: this.userId,
     };
 
-    const postId = this.post.id;
-
-    this.post.comments.push(newComment);
- 
-    this.postService.updatePost(postId, newComment).then(() => {
-      console.log('Updated post is successfull')
-    }).catch(error => {
-     console.log(error);
+    this.postService.addCommentToPost(this.postId, newComment).then(() => {
+      this.getPostComments(); 
     });
-      this.router.navigate(['/post', this.post.id]);
-    };
-  
+  }
 
   cancel(): void {
-    this.router.navigate(['/post', this.post.id]);
+    this.router.navigate(['/post', this.postId]);
   }
 }

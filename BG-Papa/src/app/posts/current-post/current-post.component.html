@@ -28,15 +28,8 @@
         <button class="unsubscribe-button" *ngIf="isSubscribed" (click)="unsubscribe()">Unsubscribe</button>
         <button class="comment-button"  routerLink="/comments">Add Comment</button>
       </div>
-    </ng-container>
-    <div class="comments-container">
-      <div *ngIf="comments.length === 0" class="no-comments-message">No comments yet!</div>
-        <div *ngFor="let comment of comments" class="comment">
-          <p class="comment-author">Author: {{ comment.author }}</p>
-          <p class="comment-date">Date: {{ comment.date }}</p>
-          <p class="comment-text">Text: {{ comment.text }}</p>
-        </div>
-      </div>
+    </ng-container>   
+      <app-comments [userId]="userId || ''" [postId]="postId"></app-comments>
     </div>
 </div>
 <ng-template #editTextTemplate>
@@ -44,4 +37,3 @@
     <textarea [(ngModel)]="post.text" name="text" class="edit-input"></textarea>   
   </form>
 </ng-template>
-<app-comments [comments]="post.comments"></app-comments>
