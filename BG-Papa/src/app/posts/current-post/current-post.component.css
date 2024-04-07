@@ -30,12 +30,14 @@
   }
   
   .edit-button,
-  .delete-button {
+  .save-button {
     padding: 8px 16px;
+    display: block;
+    margin-top: 1em;
     margin-right: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #4CAF50; /* Зелен цвят */
+    background-color: #4CAF50; 
     color: white;
     font-size: 14px;
     cursor: pointer;
@@ -44,12 +46,26 @@
   
   .edit-button:hover,
   .delete-button:hover {
-    background-color: #45a049; /* По-тъмно зелен цвят при ховър */
+    background-color: #45a049; 
+  }
+
+  .delete-button {
+    padding: 8px 16px;
+    display: block;
+    margin-top: 1em;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50; 
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
   
   .comments-container {
     max-width: 800px;
-    margin: 20px auto; /* Центрира контейнера на коментарите */
+    margin: 20px auto; 
   }
   
   .comment {
@@ -66,5 +82,12 @@
   
   .comment-author {
     font-style: italic;
+  }
+
+  .save-cancel{
+    display: flex;
+    justify-content: flex-start;
+    margin: 1em;
+    gap: 2em;
   }
   

@@ -46,20 +46,7 @@ export class ProfileComponent implements OnInit  {
     }, (error) => {
       console.error('Error updating user interests:', error);
     });
-  }
-
-  deleteProfile(): void {
-    this.userService.deleteProfile(this.userData._id).pipe(
-      map(() => {
-        return this.userService.logout();
-      })
-    ).subscribe(() => {
-      console.log('User profile deleted successfully and logged out.');
-      this.router.navigate(['/home']);
-    }, (error) => {
-      console.error('Error deleting user profile:', error);
-    });
-  }
+  } 
 
   
 }

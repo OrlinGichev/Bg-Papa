@@ -1,46 +1,22 @@
 <div class="posts-container" *ngIf="post">
-    <!-- Постовете се генерират динамично от Angular, затова ги показваме само като пример -->
-    <div class="post" >
-      <h2 class="post-title" name="title">{{post.title}}</h2>
-      <p class="post-category" name="category">Category: {{post.category}}</p>
-      <p class="post-author" name="author">Author: {{post.authorName}}</p>
-      <p class="post-text" name="text">Text: {{post.text}}</p>
-      <p class="post-comments" name="comments">Comments: 10</p>
-      <div class="post-buttons">
-        <ng-container *ngIf="userId === post.authorId">
-          <button class="edit-button">Edit</button>
-          <button class="delete-button">Delete</button>
-        </ng-container>
-        <ng-container *ngIf="userId !== post.authorId">
-          <button class="forum-topic" (click)="subscribe()" *ngIf="!isSubscribed">Subscribe</button>
-          <button class="forum-topic unsubscribe" (click)="unsubscribe()" *ngIf="isSubscribed">Unsubscribe</button>
-        </ng-container>
-      </div>
+  <div class="post">
+    <h2 class="post-title">{{post.title}}</h2>
+    <p class="post-category">Category: {{post.category}}</p>
+    <p class="post-author">Author: {{post.authorName}}</p>
+    <p class="post-text" *ngIf="!editingPost; else editTextTemplate">Text: {{post.text}}
       
-    </div>
+      <button class="edit-button" (click)="editPost()">Edit</button>
+      <button class="delete-button" (click)="deletePost()">Delete</button>
+    </p>
   </div>
-  
-  <div class="comments-container">
-    <!-- Контейнери за коментарите -->
-    <div class="comment">
-      <p class="comment-text">Comment 1</p>
-      <p class="comment-author">Author: Comment Author</p>
+</div>
+
+<ng-template #editTextTemplate>
+  <form (ngSubmit)="saveChanges()">
+    <textarea [(ngModel)]="post.text" name="text" class="edit-input"></textarea>
+    <div class="save-cancel" >
+      <button type="submit" class="edit-button">Save</button>
+      <button type="button" class="delete-button" (click)="cancelEdit()">Cancel</button>
     </div>
-    <div class="comment">
-      <p class="comment-text">Comment 2</p>
-      <p class="comment-author">Author: Comment Author</p>
-    </div>
-    <div class="comment">
-        <p class="comment-text">Comment 2</p>
-        <p class="comment-author">Author: Comment Author</p>
-      </div>
-      <div class="comment">
-        <p class="comment-text">Comment 2</p>
-        <p class="comment-author">Author: Comment Author</p>
-      </div>
-      <div class="comment">
-        <p class="comment-text">Comment 2</p>
-        <p class="comment-author">Author: Comment Author</p>
-      </div>
-  </div>
-  
+  </form>
+</ng-template>

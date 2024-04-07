@@ -1,5 +1,5 @@
 <aside>
-    <div class="category auto">
+    <div class="category auto" (click)="getPostsByCategory('auto')">
       <img src="../../assets/auto.png" alt="Auto Category Image">
       <div class="category-title">
         <h3>Auto</h3>
@@ -7,7 +7,7 @@
       </div>
     </div>
     
-    <div class="category repair">
+    <div class="category repair" (click)="getPostsByCategory('repair')">
       <img src="../../assets/repair.png" alt="Repair Category Image">
       <div class="category-title">
         <h3>Repair</h3>
@@ -15,7 +15,7 @@
       </div>
     </div>
     
-    <div class="category sport">
+    <div class="category sport" (click)="getPostsByCategory('sport')">
       <img src="../../assets/sport.png" alt="Sport Category Image">
       <div class="category-title">
         <h3>Sport</h3>
