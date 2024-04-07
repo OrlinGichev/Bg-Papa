@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
 import { Post } from './types/post';
+import { Comment } from './types/Comment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class ApiService implements OnInit{
   getCurrentPost(postId: string): Observable<any> {  
      
     return this.firestore.collection('posts').doc(postId).valueChanges();
+  }
+
+  getPostComments(postId: string): Observable<Comment[]> {
+    return this.firestore.collection<Comment>('posts').doc(postId).collection<Comment>('comments').valueChanges();
   }
   
   getPostCountByCategory(category: string): Observable<number> {

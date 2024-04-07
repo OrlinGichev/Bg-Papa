@@ -3,20 +3,45 @@
     <h2 class="post-title">{{post.title}}</h2>
     <p class="post-category">Category: {{post.category}}</p>
     <p class="post-author">Author: {{post.authorName}}</p>
-    <p class="post-text" *ngIf="!editingPost; else editTextTemplate">Text: {{post.text}}
-      
-      <button class="edit-button" (click)="editPost()">Edit</button>
-      <button class="delete-button" (click)="deletePost()">Delete</button>
-    </p>
-  </div>
+    <p class="post-text" *ngIf="!editingPost; else editTextTemplate">Text: {{post.text}}</p>
+    
+    <!-- Проверка за идентификация на потребителя -->
+    <ng-container *ngIf="userId === post.authorId">
+      <ng-container *ngIf="!editingPost">
+        <div class="save-cancel">
+          <button class="edit-button" (click)="editPost()">Edit</button>
+          <button class="delete-button" (click)="deletePost()">Delete</button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="editingPost">
+        <div class="save-cancel">
+          <button type="button" class="edit-button" (click)="saveChanges()">Save</button>
+          <button type="button" class="delete-button" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </ng-container>
+    </ng-container>
+    
+    <ng-container *ngIf="userId !== post.authorId">
+      <!-- Проверка за абониране -->
+      <div class="subscribe-comment">
+        <button class="subscribe-button" *ngIf="!isSubscribed" (click)="subscribe()">Subscribe</button>
+        <button class="unsubscribe-button" *ngIf="isSubscribed" (click)="unsubscribe()">Unsubscribe</button>
+        <button class="comment-button"  routerLink="/comments">Add Comment</button>
+      </div>
+    </ng-container>
+    <div class="comments-container">
+      <div *ngIf="comments.length === 0" class="no-comments-message">No comments yet!</div>
+        <div *ngFor="let comment of comments" class="comment">
+          <p class="comment-author">Author: {{ comment.author }}</p>
+          <p class="comment-date">Date: {{ comment.date }}</p>
+          <p class="comment-text">Text: {{ comment.text }}</p>
+        </div>
+      </div>
+    </div>
 </div>
-
 <ng-template #editTextTemplate>
   <form (ngSubmit)="saveChanges()">
-    <textarea [(ngModel)]="post.text" name="text" class="edit-input"></textarea>
-    <div class="save-cancel" >
-      <button type="submit" class="edit-button">Save</button>
-      <button type="button" class="delete-button" (click)="cancelEdit()">Cancel</button>
-    </div>
+    <textarea [(ngModel)]="post.text" name="text" class="edit-input"></textarea>   
   </form>
 </ng-template>
+<app-comments [comments]="post.comments"></app-comments>

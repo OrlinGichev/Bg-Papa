@@ -1,0 +1,25 @@
+<div class="comments-container">
+
+    <div class="add-comment-section">
+      <h3>Add a Comment</h3>
+      <form (submit)="saveComment()">
+        <div>
+          <label for="commentText">Comment:</label>
+          <textarea id="commentText" [(ngModel)]="commentText" name="commentText"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="button" (click)="cancel()">Cancel</button>
+      </form>
+    </div>
+  
+
+    <div class="comment-list">
+      <div *ngIf="comments.length === 0" class="no-comments-message">No comments yet!</div>
+      <div *ngFor="let comment of comments" class="comment">
+        <p class="comment-author">Author: {{ comment.author }}</p>
+        <p class="comment-date">Date: {{ comment.date }}</p>
+        <p class="comment-text">Text: {{ comment.text }}</p>
+      </div>
+    </div>
+  </div>
+  

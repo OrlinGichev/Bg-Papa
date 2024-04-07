@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { Comment } from 'src/app/types/Comment';
 import { Post } from 'src/app/types/post';
 import { UserService } from 'src/app/user/user.service';
 
@@ -18,12 +19,14 @@ export class CurrentPostComponent implements OnInit {
   isSubscribed : boolean = false; 
   originalPostData = {} as Post;
   editingPost = false;
+  comments: Comment[] = [];
 
   constructor(private apiService:ApiService, private route:ActivatedRoute, private userService: UserService, private firestore : AngularFirestore, private router: Router) {}
 
   ngOnInit():void {    
     this.route.params.subscribe(data=> {
       this.postId = data['id'];
+      this.getPostComments();
     });
     this.route.params.subscribe(params => {    
       this.apiService.getCurrentPost(this.postId).subscribe(
@@ -62,6 +65,12 @@ export class CurrentPostComponent implements OnInit {
         console.error("Error removing post: ", error);
       });
     }
+  } 
+
+  getPostComments() {
+    this.apiService.getPostComments(this.postId).subscribe(comments => {
+      this.comments = comments;
+    });
   }
 
   subscribe(){

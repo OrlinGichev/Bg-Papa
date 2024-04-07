@@ -42,6 +42,7 @@ savePost(): void {
     authorId: this.currentUser?._id,
     _id: this.afs.createId(),
     created_at: new Date(),
+    comments: [{}]
   };
   
   this.afs.collection('posts').doc(post._id).set(post);

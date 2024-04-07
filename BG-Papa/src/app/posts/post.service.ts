@@ -18,4 +18,9 @@ export class PostService {
         return this.firestore.collection<Post>('posts', queryFn)
         .valueChanges() as Observable<Post[]>;
     }
+
+    updatePost(postId: string, newData: any): Promise<void> {
+      const postRef = this.firestore.collection('posts').doc(postId);
+      return postRef.update(newData);
+    }
 }

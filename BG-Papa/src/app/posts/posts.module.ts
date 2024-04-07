@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NewPostComponent } from './new-post/new-post.component';
 import { PostRoutingModule } from './post-routing.module';
 import { CurrentPostComponent } from './current-post/current-post.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 
@@ -12,7 +13,8 @@ import { CurrentPostComponent } from './current-post/current-post.component';
 @NgModule({
   declarations: [
     NewPostComponent,
-    CurrentPostComponent
+    CurrentPostComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule, FormsModule, SharedModule, PostRoutingModule
