@@ -1,25 +1,25 @@
 <aside>
-    <div class="category auto" (click)="getPostsByCategory('auto')">
+    <div class="category auto">
       <img src="../../assets/auto.png" alt="Auto Category Image">
       <div class="category-title">
         <h3>Auto</h3>
-        <p class="category-details">Posts: 5</p>
+        <p class="category-details">Posts: {{autoPostCount}}</p>
       </div>
     </div>
     
-    <div class="category repair" (click)="getPostsByCategory('repair')">
+    <div class="category repair">
       <img src="../../assets/repair.png" alt="Repair Category Image">
       <div class="category-title">
         <h3>Repair</h3>
-        <p class="category-details">Posts: 8</p>
+        <p class="category-details">Posts: {{repairPostCount}}</p>
       </div>
     </div>
     
-    <div class="category sport" (click)="getPostsByCategory('sport')">
+    <div class="category sport">
       <img src="../../assets/sport.png" alt="Sport Category Image">
       <div class="category-title">
         <h3>Sport</h3>
-        <p class="category-details">Posts: 3</p>
+        <p class="category-details">Posts: {{sportPostCount}}</p>
       </div>
     </div>
   </aside>

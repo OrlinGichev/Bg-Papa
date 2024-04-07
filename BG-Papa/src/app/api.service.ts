@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Post } from './types/post';
 
 @Injectable({
@@ -25,4 +25,9 @@ export class ApiService implements OnInit{
     return this.firestore.collection('posts').doc(postId).valueChanges();
   }
   
+  getPostCountByCategory(category: string): Observable<number> {
+    return this.firestore.collection<Post>('posts', ref => ref.where('category', '==', category)).valueChanges().pipe(
+      map(posts => posts.length)
+    );
+  }
 }
