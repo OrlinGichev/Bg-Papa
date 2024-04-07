@@ -14,7 +14,10 @@ export class PostsListComponent implements OnInit{
   posts : Post[] | null = [];
   currenetPost: Post | null = null;
   isLoading : boolean = true;
-  isLoggedIn : boolean = false;
+  get isLoggedIn(): boolean {
+    const storedUser = localStorage.getItem('currentUser');
+    return !!storedUser;
+  }
 
   constructor (private api: ApiService, private userService: UserService) {}
 
@@ -30,7 +33,7 @@ export class PostsListComponent implements OnInit{
   ngOnInit (): void{    
 
     this.userService.getUserObservable().subscribe(user => {
-      this.isLoggedIn = !!user
+      
     })
       this.api.getPostsList().subscribe(posts =>{      
         this.posts = posts;   
@@ -44,7 +47,7 @@ export class PostsListComponent implements OnInit{
     if (timestamp && timestamp.seconds && timestamp.nanoseconds) {
       const milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000;
       const date = new Date(milliseconds);
-      return date.toLocaleDateString(); // Връща само датата без час
+      return date.toLocaleDateString(); 
     } else {
       return 'Invalid date';
     }

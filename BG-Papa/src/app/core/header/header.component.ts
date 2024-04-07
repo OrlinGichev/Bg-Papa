@@ -13,13 +13,21 @@ export class HeaderComponent implements OnInit {
   username: string | undefined;
 
   get isLoggedIn(): boolean {
-    return this.userService.isLogged;
+    const storedUser = localStorage.getItem('currentUser');
+    return !!storedUser;
   }
 
   ngOnInit() {
     this.userService.getUserInfo().subscribe(currentUser => {
-      this.username = currentUser?.username;
+      this.username = currentUser?.username;      
     });
+    const storedUser = localStorage.getItem('currentUser');
+  if (storedUser) {
+    this.username = JSON.parse(storedUser)?.username;
+     this.userService.getUserObservable().subscribe(user => {
+      // Обновете нужната ви логика за рендиране на компонента с информацията за потребителя
+    });
+  }
   }
  
   logout() {

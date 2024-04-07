@@ -26,7 +26,6 @@
       <div class="subscribe-comment">
         <button class="subscribe-button" *ngIf="!isSubscribed" (click)="subscribe()">Subscribe</button>
         <button class="unsubscribe-button" *ngIf="isSubscribed" (click)="unsubscribe()">Unsubscribe</button>
-        <button class="comment-button"  routerLink="/comments">Add Comment</button>
       </div>
     </ng-container>   
       <app-comments [userId]="userId || ''" [postId]="postId"></app-comments>

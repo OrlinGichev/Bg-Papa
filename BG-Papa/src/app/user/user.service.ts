@@ -51,7 +51,8 @@ export class UserService {
               loginSuccessful = true;
             }
           }); 
-          this.getUserInfo();       
+          this.getUserInfo(); 
+                
           return of(loginSuccessful);
         }
       }),

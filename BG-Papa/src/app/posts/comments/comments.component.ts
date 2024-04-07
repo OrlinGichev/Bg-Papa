@@ -48,4 +48,14 @@ export class CommentsComponent implements OnInit {
   cancel(): void {
     this.router.navigate(['/post', this.postId]);
   }
+
+  formatTimestamp(timestamp: any): string {
+    if (timestamp && timestamp.seconds && timestamp.nanoseconds) {
+      const milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000;
+      const date = new Date(milliseconds);
+      return date.toLocaleDateString(); 
+    } else {
+      return 'Invalid date';
+    }
+  }
 }

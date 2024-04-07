@@ -1,28 +1,76 @@
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1em;   
+}
+
+.button-add, .button-cancel{
+    padding: 8px 16px;
+    display: block;
+    margin-top: 1em;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+     
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-add{
+    background-color: #4CAF50;
+}
+
+.button-add:hover {
+    background-color: #3b7204; 
+  }
+  
+.button-cancel{
+    background-color: #c64031; 
+ }
+
+ .button-cancel:hover {
+     background-color: #8a2e0d; 
+}
+
 .comment-container {
-    background-color: #f8f9fa; /* Цвят на фона на контейнера за коментар */
-    border-radius: 8px; /* Закръгленост на контейнера за коментар */
-    padding: 10px; /* Отстъп на вътрешната част на контейнера за коментар */
-    margin-bottom: 10px; /* Отстъп между коментарите */
+    background-color: #f8f9fa; 
+    border-radius: 8px; 
+    padding: 10px; 
+    margin-bottom: 10px; 
   }
   
   .comment-author {
-    font-weight: bold; /* Удебелен текст за автора на коментара */
+    font-weight: bold; 
   }
   
   .comment-date {
-    color: #6c757d; /* Цвят на текста за датата на коментара */
+    color: #2c2d2e; 
   }
   
   .comment-text {
-    margin-top: 5px; /* Отстъп от горната част на текста на коментара */
+    margin: 15px; 
+ 
   }
 
   .add-comment-section{
     border: 2px solid black;
     border-radius: 10px;
     padding: 15px;
+    margin: 10px;
     display: flex;
     flex-direction: column;
-    background-color: rgba(6, 178, 236, 0.818);
+    background-color: rgba(94, 196, 230, 0.818);
+  }
+
+  .comment{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    background-color: rgba(78, 182, 128, 0.818);
   }
   

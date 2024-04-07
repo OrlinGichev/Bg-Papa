@@ -7,8 +7,10 @@
           <label for="commentText">Comment:</label>
           <textarea id="commentText" [(ngModel)]="commentText" name="commentText"></textarea>
         </div>
-        <button type="submit">Submit</button>
-        <button type="button" (click)="cancel()">Cancel</button>
+        <div class="button">
+          <button type="submit" class="button-add">Add</button>
+          <button type="button" class="button-cancel" (click)="cancel()">Cancel</button>
+        </div>
       </form>
     </div>
   
@@ -17,9 +19,8 @@
       <div *ngIf="!comments || comments.length === 0" class="no-comments-message">No comments yet!</div>
       <ng-container *ngIf="comments.length > 0">
         <div *ngFor="let comment of comments" class="comment">
-          <p class="comment-author">Author: {{ comment.author }}</p>
-          <p class="comment-date">Date: {{ comment.date }}</p>
-          <p class="comment-text">Text: {{ comment.text }}</p>
+          <p class="comment-date">Date: {{ formatTimestamp(comment.date) }}</p>
+          <p class="comment-text">{{ comment.author }} : {{ comment.text }}</p>
         </div>
     </ng-container>
     </div>
