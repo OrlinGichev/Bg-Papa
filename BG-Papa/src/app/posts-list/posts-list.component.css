@@ -1,19 +1,20 @@
 main {
   display: flex;
+  flex-wrap: wrap;
   width: 90%;
   justify-items: center;
   margin: 2em ;
-  gap: 1em;
+  gap: 2em;
   float: left;
 }
 
 .forum-topic {
-    background-color: #f9f9f9;
+    background-color: #e9e7e7;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 20px;
-    width: 70%; /* Set the width of the forum topics to 70% of the screen */
+    width: 25%; 
     height: auto;
     position: relative; 
   }

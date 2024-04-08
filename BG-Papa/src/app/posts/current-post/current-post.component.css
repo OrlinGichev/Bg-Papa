@@ -1,11 +1,11 @@
 .posts-container {
     max-width: 800px;
-    margin: 0 auto; /* Центрира контейнера на постовете */
+    margin: 0 auto; 
     padding-top: 2em;
   }
   
   .post {
-    background-color: #f9f9f9;
+    background-color: #dedede;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;

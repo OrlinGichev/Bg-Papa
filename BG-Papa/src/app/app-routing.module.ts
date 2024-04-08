@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { MainComponent } from './main/main.component';
 import { CurrentPostComponent } from './posts/current-post/current-post.component';
+import { UserService } from './user/user.service';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home'}, 
@@ -19,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

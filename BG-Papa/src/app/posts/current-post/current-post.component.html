@@ -5,7 +5,6 @@
     <p class="post-author">Author: {{post.authorName}}</p>
     <p class="post-text" *ngIf="!editingPost; else editTextTemplate">Text: {{post.text}}</p>
     
-    <!-- Проверка за идентификация на потребителя -->
     <ng-container *ngIf="userId === post.authorId">
       <ng-container *ngIf="!editingPost">
         <div class="save-cancel">

@@ -65,7 +65,8 @@ export class UserService {
 
   setUser(user: UserForAuth) {
     this.user$$.next(user);
-  }
+  } 
+  
 
   getUserKeyFromLocalStorage(key: string): string | undefined {
     const userData = localStorage.getItem('currentUser');

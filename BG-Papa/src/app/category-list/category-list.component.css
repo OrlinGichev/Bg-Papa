@@ -3,15 +3,15 @@ aside {
   flex-direction: column;
   padding-top: 2em;
   padding-right: 2em;
-  float: right; /* Position the aside section to the right */
-  width: 300px; /* Set the width of the aside section */
-  margin-left: 20px; /* Add some space between the main and aside sections */
+  float: right; 
+  width: 300px; 
+  margin-left: 20px; 
 }
 
 img {
   display: block;
   height: auto;
-  width: 20%; /* Ensure images don't exceed the container width */
+  width: 20%; 
 }
 
 .category-title {
@@ -27,11 +27,11 @@ img {
 }
 
 .repair {
-  background: rgb(18, 146, 18);
+  background: rgb(76, 147, 76);
 }
 
 .sport {
-  background: rgb(214, 36, 36);
+  background: rgb(175, 68, 68);
 }
   
 .category {
