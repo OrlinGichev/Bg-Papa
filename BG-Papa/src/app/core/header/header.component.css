@@ -89,15 +89,11 @@ ul li {
 
 #logo {
   width: 825px;
-  position: relative;
   height: 168px;
+  font-size: 24px;
+  text-align: center;
 }
 
-#logo #logo_text {
-  position: absolute;
-  top: 20px;
-  left: 0;
-}
 
 #logo h1,
 #logo h2 {
@@ -141,6 +137,7 @@ ul#menu li {
   float: left;
   margin: 0;
   padding: 0;
+  font-size: 16px;
 }
 
 ul#menu li {

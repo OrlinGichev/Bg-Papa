@@ -41,7 +41,7 @@ export class UserService {
     return from(getDocs(q)).pipe(
       switchMap((querySnapshot: QuerySnapshot<DocumentData>) => {
         if (querySnapshot.empty) {
-          alert('User with provided email does not exist'); // Извеждаме съобщение, че потребителят не съществува
+          alert('User with provided email does not exist'); 
           return of(false);
         } else {
           let loginSuccessful = false;
@@ -53,7 +53,7 @@ export class UserService {
               localStorage.setItem('currentUser', JSON.stringify(user));
               loginSuccessful = true;
             } else {
-              alert('Incorrect password'); // Извеждаме съобщение, че паролата е грешна
+              alert('Incorrect password');
             }
           }); 
           this.getUserInfo(); 
