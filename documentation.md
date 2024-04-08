@@ -1,1 +1,2 @@
-# Документация за проекта
+# Project documentation
+## Instalation
