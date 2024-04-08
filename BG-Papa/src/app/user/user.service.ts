@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserForAuth } from '../types/user';
-import { Observable, of, from, BehaviorSubject } from 'rxjs';
+import { Observable, of, from, BehaviorSubject, combineLatest } from 'rxjs';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { Firestore, collection, query, where, getDocs } from '@angular/fire/firestore';
 import { QuerySnapshot, DocumentData } from '@angular/fire/firestore';
@@ -95,21 +95,22 @@ export class UserService {
     const userCollection = collection(this.firestore, 'users');
     const usernameQuery = query(userCollection, where('username', '==', username));
     const emailQuery = query(userCollection, where('email', '==', email));
-
-    return from(getDocs(usernameQuery)).pipe(
-      switchMap((usernameSnapshot: QuerySnapshot<DocumentData>) => {
-        if(!usernameSnapshot.empty){
-          return of(true);
-        } else {
-          return from(getDocs(emailQuery)).pipe(
-            map( (emailSnapshot: QuerySnapshot<DocumentData>) => !!emailSnapshot.empty),
-            catchError(() => of(false))
-          );
-        }
-      }),
+  
+    const username$ = from(getDocs(usernameQuery)).pipe(
+      map((usernameSnapshot: QuerySnapshot<DocumentData>) => !usernameSnapshot.empty),
       catchError(() => of(false))
     );
+  
+    const email$ = from(getDocs(emailQuery)).pipe(
+      map((emailSnapshot: QuerySnapshot<DocumentData>) => !emailSnapshot.empty),
+      catchError(() => of(false))
+    );
+  
+    return combineLatest([username$, email$]).pipe(
+      map(([usernameExists, emailExists]) => usernameExists || emailExists)
+    );
   }
+  
 
   updateInterests(userId: string, newInterests: string): Observable<void> {
     const userDocRef = this.angularFirestore.collection('users').doc(userId);
