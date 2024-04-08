@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostService } from '../post.service';
 import { Comment } from 'src/app/types/Comment';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-comments',
@@ -17,7 +18,7 @@ export class CommentsComponent implements OnInit {
   commentText: string='';
   comments: Comment[] = [];
 
-  constructor(private router: Router, private postService: PostService) {}
+  constructor(private router: Router, private postService: PostService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.getPostComments();
@@ -32,6 +33,9 @@ export class CommentsComponent implements OnInit {
   }
 
   saveComment(): void {
+    
+    const tempUsername = this.userService.getUserKeyFromLocalStorage("username");      
+    this.username = tempUsername !== undefined ? tempUsername : 'Anonymous';
     const newComment = {
       author: this.username,
       date: this.currentDate,
@@ -42,6 +46,7 @@ export class CommentsComponent implements OnInit {
 
     this.postService.addCommentToPost(this.postId, newComment).then(() => {
       this.getPostComments(); 
+      this.commentText = "";
     });
   }
 
