@@ -1,3 +1,4 @@
+import * as bcrypt from 'bcryptjs';
 import { Injectable } from '@angular/core';
 import { UserForAuth } from '../types/user';
 import { Observable, of, from, BehaviorSubject, combineLatest } from 'rxjs';
@@ -36,19 +37,23 @@ export class UserService {
   login(email: string, password: string): Observable<boolean> {
     const usersRef = collection(this.firestore, 'users');
     const q = query(usersRef, where('email', '==', email));
-
+  
     return from(getDocs(q)).pipe(
       switchMap((querySnapshot: QuerySnapshot<DocumentData>) => {
         if (querySnapshot.empty) {
+          alert('User with provided email does not exist'); // Извеждаме съобщение, че потребителят не съществува
           return of(false);
         } else {
           let loginSuccessful = false;
           querySnapshot.forEach((doc) => {
             const user = doc.data() as UserForAuth;
-            if (user.password === password) {
+            const isPasswordCorrect = bcrypt.compareSync(password, user.password);
+            if (isPasswordCorrect) {
               this.user$$.next(user);
               localStorage.setItem('currentUser', JSON.stringify(user));
               loginSuccessful = true;
+            } else {
+              alert('Incorrect password'); // Извеждаме съобщение, че паролата е грешна
             }
           }); 
           this.getUserInfo(); 
@@ -62,6 +67,7 @@ export class UserService {
       })
     );
   }
+  
 
   setUser(user: UserForAuth) {
     this.user$$.next(user);

@@ -1,3 +1,4 @@
+import * as bcrypt from 'bcryptjs';
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -27,13 +28,11 @@ export class RegisterComponent {
   }
 
   async submitForm(): Promise<void> {
-   
     if (this.password !== this.confirmPassword) {
       this.isMatch = false;
       return;
     }
 
-   
     const username = this.registerForm.value.username;
     const email = this.registerForm.value.email;
     const userExists = await this.userService.checkUserExists(username, email).toPromise();
@@ -42,16 +41,17 @@ export class RegisterComponent {
       return;
     }
 
-   
+    // Хеширане на паролата
+    const hashedPassword = await bcrypt.hash(this.registerForm.value.password, 10);
+
     const user = {
       username: username,
       email: email,
-      password: this.registerForm.value.password,
+      password: hashedPassword,
       interests: this.registerForm.value.interests,
       _id: this.afs.createId(),
     };
 
- 
     this.afs.collection('users').doc(user._id).set(user)
       .then(() => {
         console.log('User registered successfully');
