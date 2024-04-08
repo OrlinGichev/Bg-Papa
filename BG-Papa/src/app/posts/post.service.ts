@@ -44,4 +44,27 @@ export class PostService {
         console.error("Error updating post: ", error);
       });
     }
+
+    subscribePost(postId: string, userId: string): Promise<void> {
+      const postRef = this.firestore.collection('posts').doc(postId);
+      return postRef.update({ subscribers: firebase.firestore.FieldValue.arrayUnion(userId) });
+    }
+
+    unsubscribePost(postId: string, userId: string): Promise<void> {
+      const postRef = this.firestore.collection('posts').doc(postId);
+      return postRef.update({
+        subscribers: firebase.firestore.FieldValue.arrayRemove(userId)
+      });
+    }
+
+    isUserSubscribed(postId: string, userId: string): Observable<boolean> {
+      return this.firestore.collection('posts').doc(postId).valueChanges().pipe(
+        map((post: any) => {
+          if (post && post.subscribers) {
+            return post.subscribers.includes(userId);
+          }
+          return false;
+        })
+      );
+    }
 }

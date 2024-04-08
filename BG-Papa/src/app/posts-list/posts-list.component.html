@@ -7,6 +7,7 @@
       <p class="topic-details">Category: {{post.category}}</p>
       <p class="topic-details">Created at: {{formatTimestamp(post.created_at)}}</p>
       <p class="topic-details">Author: {{post.authorName}}</p>
+      <p class="topic-details">Subscribers: {{post.subscribers.length}}</p>
       <p class="topic-details">Comments: {{post.comments.length}}</p>
       <ng-container *ngIf="isLoggedIn">
         <button class="forum-topic" [routerLink]="['/posts', post._id]">Detail</button>

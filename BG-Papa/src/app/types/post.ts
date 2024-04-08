@@ -9,5 +9,6 @@ export interface Post {
     authorName: string,
     created_at: Date,
     comments: Comment[],
+    subscribers: string[],
     _id: string
 }

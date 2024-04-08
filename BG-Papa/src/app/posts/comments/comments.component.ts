@@ -46,7 +46,7 @@ export class CommentsComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/post', this.postId]);
+    this.commentText = "";
   }
 
   formatTimestamp(timestamp: any): string {

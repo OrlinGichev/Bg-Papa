@@ -57,7 +57,7 @@ export class UserService {
         }
       }),
       catchError((error) => {
-        console.error('Error getting documents: ', error);
+        alert(`Error getting documents: ${error}`);
         return of(false);
       })
     );
@@ -117,7 +117,7 @@ export class UserService {
     return from(userDocRef.update(interestsUpdate))
       .pipe(
         catchError((error) => {
-          console.error('Error updating user interests:', error);
+          alert(`Error updating user interests:${error}` );
           throw error;
         })
       );
@@ -127,7 +127,7 @@ export class UserService {
     const userDocRef = this.angularFirestore.collection('users').doc(userId);
     return from(userDocRef.delete()).pipe(
       catchError((error) => {
-        console.error('Error deleting user profile:', error);
+        alert(`Error deleting user profile:${error}`);
         throw error;
       })
     );

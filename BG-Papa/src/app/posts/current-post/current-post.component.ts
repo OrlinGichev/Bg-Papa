@@ -6,6 +6,7 @@ import { Comment } from 'src/app/types/Comment';
 import { Post } from 'src/app/types/post';
 import { UserService } from 'src/app/user/user.service';
 import { PostService } from '../post.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-current-post',
@@ -24,18 +25,38 @@ export class CurrentPostComponent implements OnInit {
 
   constructor(private apiService:ApiService, private route:ActivatedRoute, private userService: UserService, private firestore : AngularFirestore, private router: Router, private postService: PostService) {}
 
-  ngOnInit():void {    
-    this.route.params.subscribe(data=> {
+  private subscription: Subscription | undefined;
+
+  async ngOnInit(): Promise<void> {
+    this.route.params.subscribe(data => {
       this.postId = data['id'];
-      this.getPostComments();
-    });
-    this.route.params.subscribe(params => {    
       this.apiService.getCurrentPost(this.postId).subscribe(
         post => {    
-          this.post = post
-        })
+          this.post = post;
+          this.getPostComments();
+        }
+      );
     });
-    this.userId = this.userService.getUserKeyFromLocalStorage("_id");
+  
+    this.userId = await this.userService.getUserKeyFromLocalStorage("_id");
+    await this.checkSubscription();  
+  }
+  
+  
+  async checkSubscription() {    
+    if (this.userId) {
+      this.subscription = this.postService.isUserSubscribed(this.postId, this.userId).subscribe(
+        (isSubscribed: boolean) => {
+          this.isSubscribed = isSubscribed;
+        }
+      );
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   editPost() {
@@ -75,13 +96,16 @@ export class CurrentPostComponent implements OnInit {
   }
 
   subscribe(){
-    this.isSubscribed = true;
-    return this.isSubscribed;
-  }
+    if (this.userId) { 
+        this.postService.subscribePost(this.postId, this.userId);        
+      }    
+    }
 
   unsubscribe(){
-    this.isSubscribed = false;
-    return this.isSubscribed;
+    if (this.userId) { 
+      this.postService.unsubscribePost(this.postId, this.userId);
+      
+    }  
   }  
-
+  
 }
