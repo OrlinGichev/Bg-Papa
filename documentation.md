@@ -68,4 +68,4 @@
   user has to fill **title**, choose **category** only from 3 category - cars, repair and sport, **content**
 
 
-    ![JavaScript](https://fontawesome.com/icons/js?f=brands&s=solid)
+    <img src="https://fontawesome.com/v5.15/icons/js?style=brands" alt="JavaScript" height="24" />
