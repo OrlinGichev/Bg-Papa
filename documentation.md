@@ -31,11 +31,12 @@
   
     posts -> all posts with *Detail* button  
     new post -> login user can add new post  
-    profile : *username* -> user can see profile information
+    profile : *username* -> user can see profile information with **edit** button / edit mode user can save / cancel interests
 
 ## Registration page 
 
   user have to fill :  
+  
     Username  
     Email  
     Interests  
@@ -45,4 +46,21 @@
 ## Login page
 
   login part is with email and password
+
+## Detail page
+
+  for user that is author of post :  
+  
+    edit post button  
+    delete post button  
+    add commnent
+
+  for user that is not author of post :  
+
+    subscribe post button  
+    add comment  
+
+  for each post user can see all of comments with author of comment and date of comment
+
+
     
