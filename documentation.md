@@ -1,6 +1,6 @@
 # Project documentation
 ## Overview
-  This is an Angular app, called **BG Papa** that is a discussion forum for the most common topics men talk about. The topics are divided into three categories - cars, repair and sports.
+  This is an Angular app, called **BG Papa** that is a discussion forum for the most common topics men talk about. The topics are divided into three categories - cars, repair and sports. Every post has comments and users can discuss post and subscribe for them. 
 
   
 ![homepage image](Homepage.png)
