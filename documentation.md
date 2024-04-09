@@ -53,7 +53,7 @@
   
     edit post button  
     delete post button  
-    add commnent
+    add comment
 
   only user that is not author of post :  
 
