@@ -13,7 +13,7 @@
   
 ## Backend
 
-  Firestore Database
+ ![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34) Firestore Database
   
 ## Home page
 
@@ -67,5 +67,3 @@
   only login user can add new post
   user has to fill **title**, choose **category** only from 3 category - cars, repair and sport, **content**
 
-
-    <img src="https://fontawesome.com/v5.15/icons/js?style=brands" alt="JavaScript" height="24" />
