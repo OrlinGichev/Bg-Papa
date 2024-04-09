@@ -35,7 +35,7 @@
 
 ## Registration page 
 
-  user have to fill :  
+  user has to fill :  
   
     Username  
     Email  
