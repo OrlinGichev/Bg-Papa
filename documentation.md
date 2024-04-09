@@ -23,7 +23,7 @@
     posts -> all post without *Detail* button, but you can see : title, category, created at, author, number of subscribers, number of comments for every post  
     login -> login page  
     register -> register page  
-    aside bar shows information about number of posts for each category : Auto, Repair, Sport 
+    aside bar shows information about number of posts for each category : Cars, Repair, Sport 
 
     
 
@@ -49,18 +49,21 @@
 
 ## Detail page
 
-  for user that is author of post :  
+  only user that is author of post :  
   
     edit post button  
     delete post button  
     add commnent
 
-  for user that is not author of post :  
+  only user that is not author of post :  
 
     subscribe post button  
     add comment  
 
   for each post user can see all of comments with author of comment and date of comment
 
+## New post page 
 
+  only login user can add new post
+  user has to fill **title**, choose **category** only from 3 category - cars, repair and sport, **content**
     
