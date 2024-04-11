@@ -82,7 +82,7 @@ ul li {
 }
 
 #header {
-  background: url(./images/header.jpg) repeat;
+  background: url(.../../../../../assets/images-header/header.jpg) repeat;
   height: 240px;
   opacity: 80%;
 }
@@ -127,7 +127,7 @@ ul li {
   width: 900px;
   height: 72px;
   padding: 0;
-  background: transparent url(./images/transparent_light.png) repeat;
+  background: transparent url(.../../../../../assets/images-header/transparent_light.png) repeat;
 }
 
 ul#menu,
@@ -162,7 +162,7 @@ ul#menu li a:hover,
 ul#menu li.selected a,
 ul#menu li.selected a:hover {
   color: #fff;
-  background: transparent url(./images/transparent.png) repeat;
+  background: transparent url(.../../../../../assets/images-header/transparent.png) repeat;
 }
 
 
